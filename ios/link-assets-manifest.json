@@ -1,0 +1,21 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "src/assets/fonts/YsabeauOfficeBold.ttf",
+      "sha1": "64abab6094875fb5c216036a5081b8048ff13c2c"
+    },
+    {
+      "path": "src/assets/fonts/YsabeauOfficeItalic.ttf",
+      "sha1": "af73891e98b44987a12ba9324cead870a3a8034f"
+    },
+    {
+      "path": "src/assets/fonts/YsabeauOfficeRegular.ttf",
+      "sha1": "fea86945dc6b94479d1c3c0a2800f82d99391c04"
+    },
+    {
+      "path": "src/assets/fonts/YsabeauOfficeSemiBold.ttf",
+      "sha1": "e0ea6e448a726fcd06898dd56f4039f96e25be24"
+    }
+  ]
+}
