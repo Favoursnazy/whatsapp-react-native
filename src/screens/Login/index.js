@@ -1,3 +1,3 @@
-import Login from './Login';
+import LoginScreen from './Login';
 
-export {Login};
+export {LoginScreen};

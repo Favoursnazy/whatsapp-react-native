@@ -1,3 +1,3 @@
-import Register from './Register';
+import RegisterScreen from './Register';
 
-export {Register};
+export {RegisterScreen};
