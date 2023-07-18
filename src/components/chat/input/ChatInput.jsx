@@ -1,18 +1,41 @@
-import {View, TouchableOpacity, TextInput} from 'react-native';
-import React, {useState} from 'react';
+import {
+  View,
+  TouchableOpacity,
+  TextInput,
+  Platform,
+  Animated,
+} from 'react-native';
+import React, {useState, memo, useEffect} from 'react';
 import styles from './style';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {THEME} from '../../../constants';
+import {EmojiPicker} from '../emoji';
 
 const ChatInput = () => {
   const [message, setMessage] = useState();
+  const [showEmojiPicker, setShowEmojiPicker] = useState(false);
+  const [heighValue, setHeightValue] = useState(new Animated.Value(70));
+
+  useEffect(() => {
+    showEmojis();
+  }, [showEmojiPicker]);
+
+  const showEmojis = () => {
+    Animated.timing(heighValue, {
+      toValue: showEmojiPicker ? 400 : 70,
+      duration: 50,
+      useNativeDriver: false,
+    }).start();
+  };
   return (
-    <View style={styles.container}>
+    <Animated.View style={[{height: heighValue}, styles.container]}>
       <View style={styles.innerContainer}>
         <View style={styles.inputAndMicroPhone}>
-          <TouchableOpacity style={styles.emoticonButton}>
+          <TouchableOpacity
+            onPress={() => setShowEmojiPicker(value => !value)}
+            style={styles.emoticonButton}>
             <Icon
-              name="emoticon-outline"
+              name={showEmojiPicker ? 'close' : 'emoticon-outline'}
               size={20}
               color={THEME.colors.description}
             />
@@ -40,8 +63,9 @@ const ChatInput = () => {
           />
         </TouchableOpacity>
       </View>
-    </View>
+      <EmojiPicker />
+    </Animated.View>
   );
 };
 
-export default ChatInput;
+export default memo(ChatInput);

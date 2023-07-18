@@ -4,11 +4,15 @@ import styles from './style';
 import FastImage from 'react-native-fast-image';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {THEME} from '../../../constants';
+import {useNavigation} from '@react-navigation/native';
 
 const ChatHeader = ({username, bio, picture, onlineStatus, onPress}) => {
+  const navigation = useNavigation();
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.backButton}>
+      <TouchableOpacity
+        style={styles.backButton}
+        onPress={() => navigation.goBack()}>
         <Icon name="angle-left" size={30} color={THEME.colors.white} />
       </TouchableOpacity>
       <View style={styles.profileOptions}>
