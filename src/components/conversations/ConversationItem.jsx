@@ -1,7 +1,10 @@
 import {View, Text, StyleSheet, TouchableOpacity} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import FastImage from 'react-native-fast-image';
 import {FONTS, THEME} from '../../constants';
+import {AppModal} from '../common/modal';
+import {Profile} from '../profile';
+import {useNavigation} from '@react-navigation/native';
 
 const ConversationItem = ({
   picture,
@@ -14,7 +17,16 @@ const ConversationItem = ({
   isMuted,
   lasteMessage,
 }) => {
-  const showStoryCircle = () => {};
+  const [modalVisible, setModalVisible] = useState(false);
+  const navigation = useNavigation();
+  const showStoryCircle = () => {
+    if (hasStory) {
+      return {
+        borderColor: THEME.colors.storyBorder,
+        borderWidth: 2,
+      };
+    }
+  };
 
   const showNotification = type => {
     if (notification && type === 'number') {
@@ -33,8 +45,20 @@ const ConversationItem = ({
   };
   return (
     <View style={styles.container}>
-      <TouchableOpacity style={styles.conversation}>
-        <TouchableOpacity style={[styles.imageContainer, showStoryCircle]}>
+      <TouchableOpacity
+        style={styles.conversation}
+        onPress={() =>
+          navigation.navigate('ChatScreen', {
+            username,
+            bio,
+            picture,
+            isBlocked,
+            isMuted,
+          })
+        }>
+        <TouchableOpacity
+          onPress={() => setModalVisible(true)}
+          style={[styles.imageContainer, showStoryCircle]}>
           <FastImage
             style={styles.image}
             source={{uri: picture, priority: FastImage.priority.high}}
@@ -57,6 +81,16 @@ const ConversationItem = ({
           </View>
         </View>
       </TouchableOpacity>
+      <AppModal animationType="slide" visible={modalVisible}>
+        <Profile
+          username={username}
+          picture={picture}
+          bio={bio}
+          isBlocked={isBlocked}
+          isMuted={isMuted}
+          hide={() => setModalVisible(false)}
+        />
+      </AppModal>
     </View>
   );
 };

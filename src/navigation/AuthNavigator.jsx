@@ -5,6 +5,7 @@ import {RegisterScreen} from '../screens/Register';
 import {VerificationScreen} from '../screens/Verification';
 import HomeNavigator from './HomeNavigator';
 import {Header} from '../components/common/header';
+import Chat from '../screens/Chat/Chat';
 
 const Stack = createNativeStackNavigator();
 
@@ -26,6 +27,7 @@ const AuthNavigator = () => {
           header: () => <Header title="Chat" />,
         }}
       />
+      <Stack.Screen component={Chat} name="ChatScreen" />
     </Stack.Navigator>
   );
 };
