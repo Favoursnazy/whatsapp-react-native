@@ -57,4 +57,23 @@ export default StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  replyContainer: {
+    paddingHorizontal: 10,
+    marginHorizontal: 10,
+    justifyContent: 'center',
+    alignItems: 'flex-start',
+    zIndex: 50,
+  },
+  replyTitle: {
+    marginTop: 5,
+    fontFamily: FONTS.YSABEAU_OFFICE_BOLD,
+  },
+  reply: {
+    marginTop: 5,
+  },
+  closeReply: {
+    position: 'absolute',
+    right: 10,
+    top: 5,
+  },
 });

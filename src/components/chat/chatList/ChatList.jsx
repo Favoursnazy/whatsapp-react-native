@@ -1,10 +1,10 @@
-import {View, Text, ScrollView} from 'react-native';
+import {ScrollView} from 'react-native';
 import {Message} from './message';
 import {message} from '../../../data/users';
 import {useRef, useState} from 'react';
 import {THEME} from '../../../constants';
 
-const ChatList = () => {
+const ChatList = ({onSwipeToReply}) => {
   const [allMessage, setAllMessage] = useState(message);
   const user = useRef(0);
   const scrollView = useRef();
@@ -22,6 +22,7 @@ const ChatList = () => {
             time={m.time}
             isLeft={m.user !== user.current}
             message={m.content}
+            onSwipe={onSwipeToReply}
           />
         );
       })}
