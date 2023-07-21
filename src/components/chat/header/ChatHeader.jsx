@@ -27,7 +27,14 @@ const ChatHeader = ({username, bio, picture, onlineStatus, onPress}) => {
           </View>
         </TouchableOpacity>
         <View style={styles.options}>
-          <TouchableOpacity style={{paddingHorizontal: 5}}>
+          <TouchableOpacity
+            onPress={() =>
+              navigation.navigate('OnCallScreen', {
+                username,
+                picture,
+              })
+            }
+            style={{paddingHorizontal: 5}}>
             <Icon name="phone" size={30} color={THEME.colors.white} />
           </TouchableOpacity>
           <TouchableOpacity style={{paddingHorizontal: 5}}>

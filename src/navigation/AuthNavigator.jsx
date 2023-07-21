@@ -6,6 +6,7 @@ import {VerificationScreen} from '../screens/Verification';
 import HomeNavigator from './HomeNavigator';
 import {Header} from '../components/common/header';
 import Chat from '../screens/Chat/Chat';
+import OnCall from '../screens/onCall/OnCall';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,7 @@ const AuthNavigator = () => {
         }}
       />
       <Stack.Screen component={Chat} name="ChatScreen" />
+      <Stack.Screen component={OnCall} name="OnCallScreen" />
     </Stack.Navigator>
   );
 };

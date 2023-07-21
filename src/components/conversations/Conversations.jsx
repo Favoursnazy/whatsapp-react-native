@@ -4,7 +4,7 @@ import ConversationItem from './ConversationItem';
 
 const Conversations = ({children}) => {
   return (
-    <ScrollView>
+    <ScrollView showsHorizontalScrollIndicator={false}>
       {children}
       <ConversationItem
         picture="https://images.pexels.com/photos/2078265/pexels-photo-2078265.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
