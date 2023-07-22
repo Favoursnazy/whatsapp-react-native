@@ -3,13 +3,17 @@ import React from 'react';
 import {THEME} from './src/constants';
 import AppContainer from './src/navigation';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
+import {BottomSheetModalProvider} from '@gorhom/bottom-sheet';
+
 const App = () => {
   return (
     <GestureHandlerRootView style={{flex: 1}}>
-      <View style={styles.container}>
-        <StatusBar styles="light" backgroundColor={THEME.colors.primary} />
-        <AppContainer />
-      </View>
+      <BottomSheetModalProvider>
+        <View style={styles.container}>
+          <StatusBar styles="light" backgroundColor={THEME.colors.primary} />
+          <AppContainer />
+        </View>
+      </BottomSheetModalProvider>
     </GestureHandlerRootView>
   );
 };
